@@ -24,4 +24,4 @@ jobs:
       - name: Run script
         env:
           TEAMS_WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
-        run: python scrape_and_send.py
+        run: python ZodiacScraper.py
