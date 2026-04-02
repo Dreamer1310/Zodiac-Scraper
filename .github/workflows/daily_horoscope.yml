@@ -1,0 +1,27 @@
+name: Daily Teams Horoscope
+
+on:
+  schedule:
+    # This is in UTC time. 05:00 UTC is 09:00 AM in Tbilisi.
+    - cron: '0 5 * * *'
+  workflow_dispatch: # This allows you to run it manually to test
+
+jobs:
+  run-scraper:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run script
+        env:
+          TEAMS_WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
+        run: python scrape_and_send.py
