@@ -1,9 +1,9 @@
-name: Daily Teams Horoscope
+name: Daily Teams Horoscope V2
 
 on:
   schedule:
     # This is in UTC time. 05:00 UTC is 09:00 AM in Tbilisi.
-    - cron: '0 5 * * *'
+    - cron: '8 5 * * *'
   workflow_dispatch: # This allows you to run it manually to test
 
 jobs:
